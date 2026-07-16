@@ -12,7 +12,7 @@ export default async function AboutPage() {
       {page?.content ? (
         <div className="prose" dangerouslySetInnerHTML={{ __html: page.content }} />
       ) : (
-        <p>欢迎了解 BOPP Film Sale。我们专注于 BOPP / BOPET 薄膜产品的研发与销售。</p>
+        <p>中国东渐集团，专业薄膜材料供应商。</p>
       )}
     </div>
   );

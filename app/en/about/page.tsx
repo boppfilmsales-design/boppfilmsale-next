@@ -12,7 +12,7 @@ export default async function EnAboutPage() {
       {page?.content ? (
         <div className="prose" dangerouslySetInnerHTML={{ __html: page.content }} />
       ) : (
-        <p>About BOPP Film Sale. We focus on R&D and sales of BOPP / BOPET film products.</p>
+        <p>AEC Group - professional film materials supplier.</p>
       )}
     </div>
   );

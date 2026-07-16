@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS products (
   subcategory_id INTEGER,
   name TEXT NOT NULL,
   model TEXT,
+  intro TEXT,
   description TEXT,
   summary TEXT,
   image TEXT,

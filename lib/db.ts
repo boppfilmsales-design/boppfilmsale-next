@@ -1,6 +1,8 @@
 import { createClient } from "@libsql/client";
 import * as dotenv from "dotenv";
+import * as path from "path";
 
+dotenv.config({ path: path.resolve(process.cwd(), ".env.local") });
 dotenv.config();
 
 const url = process.env.TURSO_DATABASE_URL;
@@ -24,4 +26,9 @@ export async function query<T = any>(
     console.error("[db.query] 查询失败：", e);
     return [];
   }
+}
+
+// 写操作（INSERT/UPDATE），用于灌示例数据
+export async function execute(sql: string, params: any[] = []) {
+  return await db.execute({ sql, args: params });
 }
