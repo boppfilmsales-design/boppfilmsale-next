@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import "./globals.css";
-import Sidebar from "./Sidebar";
 
 export const metadata: Metadata = {
-  title: "中国东渐集团 - BOPP/BOPET 薄膜",
-  description: "安徽东渐进出口有限公司 - BOPP/BOPET 薄膜、胶粘带、涂布膜等产品供应商",
+  title: "AEC GROUP - Professional BOPP/BOPET Film Supplier",
+  description: "Anhui Eastern Progress Imp. & Exp. Co., Ltd - Global supplier of BOPP, BOPET films, adhesive tapes, ribbons & labels, and packaging machinery",
 };
 
 export default function RootLayout({
@@ -14,34 +11,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="zh-CN">
-      <body>
-        <header className="site-header">
-          <div className="wrap" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <Link href="/" className="logo">中国东渐集团</Link>
-            <nav className="site-nav">
-              <Link href="/">首页</Link>
-              <Link href="/about">关于我们</Link>
-              <Link href="/products">产品展示</Link>
-              <Link href="/news">新闻动态</Link>
-              <Link href="/contact">联系我们</Link>
-              <Link href="/feedback">在线留言</Link>
-              <Link href="/en" className="lang-switch">English</Link>
-            </nav>
-          </div>
-        </header>
-        <main className="wrap">
-          <div className="layout">
-            <Sidebar />
-            <div className="content-box">{children}</div>
-          </div>
-        </main>
-        <footer className="site-footer">
-          <div className="wrap">
-            中国东渐集团（安徽东渐进出口有限公司） · 邮箱：sale@boppfilmsale.com · 电话：86-551-64687285
-          </div>
-        </footer>
-      </body>
+    <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }
