@@ -1,4 +1,4 @@
-import { ZhLayoutWrapper } from "./LayoutComponents";
+import { ZhLayoutWrapper } from "./HeaderFooter";
 import "./globals.css";
 
 export default function ZhLayout({

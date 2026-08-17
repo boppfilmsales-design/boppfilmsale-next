@@ -1,4 +1,4 @@
-import { RootHeader, RootFooter } from "./LayoutComponents";
+import { RootHeader, RootFooter } from "./HeaderFooter";
 import "./globals.css";
 
 export default function RootLayout({

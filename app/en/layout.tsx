@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { EnHeader, EnFooter } from "./LayoutComponents";
+import { EnHeader, EnFooter } from "./HeaderFooter";
 import "../globals.css";
 
 export default function EnLayout({
