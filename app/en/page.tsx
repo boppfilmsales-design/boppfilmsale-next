@@ -23,6 +23,13 @@ export default async function HomeEnPage() {
               <Link href="#products" className="btn btn-gold">Explore Catalog</Link>
               <Link href="#contact" className="btn btn-outline" style={{ background: "transparent", borderColor: "#fff", color: "#fff" }}>Get a Quote</Link>
             </div>
+            {/* Language Switcher in Hero */}
+            <div className="hero-lang-switcher">
+              <a href="/" className="lang-btn-hero" title="中文版">
+                <span className="lang-flag">🇨🇳</span>
+                <span>中文</span>
+              </a>
+            </div>
             <div className="hero-stats">
               <div className="hero-stat"><span className="num">14+</span><span className="label">Years of Experience</span></div>
               <div className="hero-stat"><span className="num">80+</span><span className="label">Export Countries</span></div>
