@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AEC GROUP - Professional BOPP/BOPET Film Supplier",
-  description: "Anhui Eastern Progress Imp. & Exp. Co., Ltd - Global supplier of BOPP, BOPET films, adhesive tapes, ribbons & labels, and packaging machinery",
+  title: "中国东渐集团 - BOPP/BOPET 薄膜",
+  description: "安徽东渐进出口有限公司 - BOPP/BOPET 薄膜、胶粘带、涂布膜等产品供应商",
 };
 
 export default function RootLayout({
@@ -11,7 +11,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="zh-CN">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
