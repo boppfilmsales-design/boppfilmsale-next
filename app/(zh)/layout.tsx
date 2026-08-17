@@ -19,8 +19,18 @@ export default function ZhLayout({
             <Link href="/news">新闻动态</Link>
             <Link href="/contact">联系我们</Link>
             <Link href="/feedback">在线留言</Link>
-            <Link href="/en" className="lang-switch">English</Link>
           </nav>
+          <div className="lang-switcher">
+            <a href="/" className="lang-btn active" title="中文版">
+              <span className="lang-flag">🇨🇳</span>
+              <span className="lang-text">中文</span>
+            </a>
+            <span className="lang-separator">|</span>
+            <a href="/en" className="lang-btn" title="English Version">
+              <span className="lang-flag">🇺🇸</span>
+              <span className="lang-text">EN</span>
+            </a>
+          </div>
         </div>
       </header>
       <main className="wrap">

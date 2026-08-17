@@ -63,6 +63,16 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .site-nav a.nav-cta::after { display: none; }
 .lang-switch { display: none; padding: 8px 14px; font-size: 13px; font-weight: 600; color: var(--primary); background: rgba(26,111,206,0.1); border-radius: var(--radius-sm); }
 .lang-switch:hover { background: var(--primary); color: #fff; }
+
+/* Language Switcher */
+.lang-switcher { display: flex; align-items: center; gap: 8px; margin-left: 24px; }
+.lang-btn { display: flex; align-items: center; gap: 6px; padding: 8px 12px; font-size: 13px; font-weight: 600; color: var(--text); background: transparent; border: 1px solid transparent; border-radius: var(--radius-sm); transition: var(--transition); }
+.lang-btn:hover { background: rgba(26,111,206,0.08); border-color: var(--primary); color: var(--primary); }
+.lang-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+.lang-btn.active:hover { background: var(--primary-dark); }
+.lang-flag { font-size: 16px; }
+.lang-separator { color: var(--border); font-weight: 300; }
+
 .mobile-menu-btn { display: none; }
 #main-content { padding-top: var(--header-height); }
 

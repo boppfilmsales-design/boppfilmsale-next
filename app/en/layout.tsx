@@ -23,6 +23,17 @@ export default function EnLayout({
             <Link href="#news">News</Link>
             <Link href="#contact" className="nav-cta">Contact Us</Link>
           </nav>
+          <div className="lang-switcher">
+            <a href="/" className="lang-btn" title="中文版">
+              <span className="lang-flag">🇨🇳</span>
+              <span className="lang-text">中文</span>
+            </a>
+            <span className="lang-separator">|</span>
+            <a href="/en" className="lang-btn active" title="English Version">
+              <span className="lang-flag">🇺🇸</span>
+              <span className="lang-text">EN</span>
+            </a>
+          </div>
           <a href="/en" className="lang-switch mobile-only">中文</a>
           <button className="mobile-menu-btn" aria-label="Toggle menu">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -38,7 +49,7 @@ export default function EnLayout({
         <div className="wrap footer-grid">
           <div className="footer-brand">
             <h3>AEC GROUP</h3>
-            <p>Anhui Eastern Progress Imp. & Exp. Co., Ltd</p>
+            <p>Anhui Eastern Communication Imp.& Exp. Co., Ltd</p>
             <p>Professional Film Materials Supplier Since 2011</p>
           </div>
           <div className="footer-links">
@@ -60,7 +71,7 @@ export default function EnLayout({
           </div>
         </div>
         <div className="wrap footer-bottom">
-          <p>&copy; {new Date().getFullYear()} AEC GROUP · Anhui Eastern Progress Imp. & Exp. Co., Ltd. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} AEC GROUP · Anhui Eastern Communication Imp.& Exp. Co., Ltd. All rights reserved.</p>
         </div>
       </footer>
       <script
