@@ -1,0 +1,38 @@
+import { createClient } from '@libsql/client';
+import * as dotenv from 'dotenv';
+import * as path from 'path';
+
+dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
+dotenv.config();
+
+const url = process.env.TURSO_DATABASE_URL;
+const authToken = process.env.TURSO_AUTH_TOKEN;
+
+async function main() {
+  const db = createClient({ url, authToken });
+  
+  console.log('Deleting unwanted products...');
+  
+  // Delete 安全套 (Condoms)
+  const r1 = await db.execute({ sql: "DELETE FROM products WHERE name = '安全套'" });
+  console.log(`Deleted 安全套: ${r1.rowsAffected} rows`);
+  
+  // Delete 轮胎 (Tires)
+  const r2 = await db.execute({ sql: "DELETE FROM products WHERE name = '轮胎'" });
+  console.log(`Deleted 轮胎: ${r2.rowsAffected} rows`);
+  
+  // Delete 添加剂 (Additives)
+  const r3 = await db.execute({ sql: "DELETE FROM products WHERE name = '添加剂'" });
+  console.log(`Deleted 添加剂: ${r3.rowsAffected} rows`);
+  
+  // Verify deletion
+  const remaining = await db.execute({
+    sql: "SELECT id, lang, name FROM products WHERE name IN ('安全套', '轮胎', '添加剂')"
+  });
+  console.log('Remaining unwanted products:', remaining.rows.length);
+  
+  await db.close();
+  process.exit(0);
+}
+
+main().catch(e => { console.error(e); process.exit(1); });

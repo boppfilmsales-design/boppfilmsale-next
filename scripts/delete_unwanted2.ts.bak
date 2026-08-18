@@ -1,0 +1,22 @@
+import { execute } from "@/lib/db";
+
+async function main() {
+  console.log('Deleting unwanted products...');
+  
+  // Delete 安全套 (Condoms)
+  const r1 = await execute("DELETE FROM products WHERE name = '安全套'");
+  console.log(`Deleted 安全套: ${r1.rowsAffected} rows`);
+  
+  // Delete 轮胎 (Tires)
+  const r2 = await execute("DELETE FROM products WHERE name = '轮胎'");
+  console.log(`Deleted 轮胎: ${r2.rowsAffected} rows`);
+  
+  // Delete 添加剂 (Additives)
+  const r3 = await execute("DELETE FROM products WHERE name = '添加剂'");
+  console.log(`Deleted 添加剂: ${r3.rowsAffected} rows`);
+  
+  console.log('Done!');
+  process.exit(0);
+}
+
+main().catch(e => { console.error(e); process.exit(1); });

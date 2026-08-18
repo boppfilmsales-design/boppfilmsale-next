@@ -1,0 +1,36 @@
+import { query } from "@/lib/db";
+
+async function main() {
+  console.log('Fetching all products...');
+  
+  const products = await query('SELECT id, lang, name FROM products ORDER BY id');
+  
+  console.log('Total products:', products.length);
+  
+  // Show Chinese products with their IDs
+  const cnProducts = products.filter((p: any) => p.lang === 'cn');
+  const enProducts = products.filter((p: any) => p.lang === 'en');
+  
+  console.log('\nChinese products:');
+  cnProducts.forEach((p: any) => console.log(`  ID ${p.id}: ${p.name}`));
+  
+  console.log('\nEnglish products:');
+  enProducts.forEach((p: any) => console.log(`  ID ${p.id}: ${p.name}`));
+  
+  // Search for products to delete
+  const toDelete = products.filter((p: any) => 
+    p.name.includes('安全套') || 
+    p.name.includes('轮胎') || 
+    p.name.includes('添加剂') ||
+    p.name.toLowerCase().includes('condom') ||
+    p.name.toLowerCase().includes('tire') ||
+    p.name.toLowerCase().includes('additive')
+  );
+  
+  console.log('\nProducts to delete:');
+  toDelete.forEach((p: any) => console.log(`  ID ${p.id} (${p.lang}): ${p.name}`));
+  
+  process.exit(0);
+}
+
+main().catch(e => { console.error(e); process.exit(1); });

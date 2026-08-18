@@ -1,0 +1,12 @@
+import { query } from "@/lib/db";
+
+async function main() {
+  const products = await query('SELECT id, lang, name FROM products WHERE lang = "en" ORDER BY id');
+  
+  console.log('English products:');
+  products.forEach((p: any) => console.log(`  ID ${p.id}: ${p.name}`));
+  
+  process.exit(0);
+}
+
+main().catch(e => { console.error(e); process.exit(1); });

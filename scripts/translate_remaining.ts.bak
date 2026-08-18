@@ -1,0 +1,14 @@
+import { execute } from "@/lib/db";
+
+async function main() {
+  console.log('Translating remaining Chinese names...');
+  
+  const result = await execute(
+    "UPDATE products SET name = 'Coding Machine' WHERE lang = 'en' AND name = '打码机'",
+  );
+  console.log(`Updated "打码机" → "Coding Machine": ${result.rowsAffected} rows`);
+  
+  process.exit(0);
+}
+
+main().catch(e => { console.error(e); process.exit(1); });

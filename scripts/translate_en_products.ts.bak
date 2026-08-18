@@ -1,0 +1,99 @@
+import { execute } from "@/lib/db";
+
+const translations: Record<string, string> = {
+  // Basic films
+  "BOPP 光膜 (EN)": "BOPP Plain Film",
+  "BOPP 消光膜 (EN)": "BOPP Matte Film",
+  "BOPP 热封膜 (EN)": "BOPP Heat Sealable Film",
+  "BOPET 镀铝膜 (EN)": "BOPET Metallized Film",
+  "BOPET 电容膜 (EN)": "BOPET Capacitor Film",
+  "BOPP 封箱胶带 (EN)": "BOPP Packing Tape",
+  "丙烯酸胶水 (EN)": "Acrylic Adhesive",
+  "PVDC 涂布膜 (EN)": "PVDC Coated Film",
+  "丙烯酸涂布膜 (EN)": "Acrylic Coated Film",
+  "CPP 流延膜 (EN)": "CPP Cast Film",
+  "尼龙膜 (EN)": "Nylon Film (BOPA)",
+  "热转印碳带 (EN)": "Thermal Transfer Ribbon",
+  "打码机 (EN)": "Coding Machine",
+  "PE 缠绕膜 (EN)": "PE Stretch Film",
+  "POF 收缩膜 (EN)": "POF Shrink Film",
+  "复印纸 (EN)": "Copy Paper",
+  "分切机 (EN)": "Slitting Machine",
+  "防护口罩 (EN)": "Protective Face Mask",
+  
+  // Without (EN) suffix - need translation
+  "薄膜标签": "Film Label",
+  "标签": "Label",
+  "丙烯酸 涂布膜": "Acrylic Coated Film",
+  "丙烯酸丁酯": "Butyl Acrylate",
+  "BOPA 涂布膜 PVDC": "BOPA PVDC Coated Film",
+  "BOPET 涂布膜 PVDC": "BOPET PVDC Coated Film",
+  "BOPET 预涂膜": "BOPET Pre-coated Film",
+  "BOPET 转移膜4.5微米": "BOPET Transfer Film 4.5μm",
+  "BOPET聚酯薄膜光膜 3.8微米": "BOPET Polyester Plain Film 3.8μm",
+  "BOPP 包花膜": "BOPP Floral Wrapping Film",
+  "BOPP 薄膜": "BOPP Film",
+  "BOPP 电容镀铝膜": "BOPP Capacitor Metallized Film",
+  "BOPP 胶带母膜": "BOPP Tape Base Film",
+  "BOPP 抗静电膜": "BOPP Anti-static Film",
+  "BOPP 镭射膜": "BOPP Holographic Film",
+  "BOPP 片膜": "BOPP Sheet Film",
+  "BOPP 涂布膜 PVDC": "BOPP PVDC Coated Film",
+  "BOPP 烟膜": "BOPP Tobacco Film",
+  "BOPP 预涂膜": "BOPP Pre-coated Film",
+  "BOPP 珠光膜": "BOPP Pearlized Film",
+  "BOPP材质 胶带母膜": "BOPP Tape Base Film",
+  "BOPET聚酯薄膜光膜 3.8微米": "BOPET Polyester Plain Film 3.8μm",
+  "BOPP触感膜 预涂膜": "BOPP Tactile Pre-coated Film",
+  "BOPS 窗口膜": "BOPS Window Film",
+  "BOPS 饭盒膜": "BOPS Food Container Film",
+  "碳带": "Thermal Ribbon",
+  "碳带分切机": "Ribbon Slitting Machine",
+  "BOPS 塑形膜": "BOPS Thermoforming Film",
+  "贴骨机": "Bone Attaching Machine",
+  "丁内酯": "Gamma-Butyrolactone (GBL)",
+  "镀铝镭射 涂布膜": "Metallized Holographic Coated Film",
+  "消光/亚光 BOPP预涂膜": "Matte BOPP Pre-coated Film",
+  "消光/亚光 预涂膜": "Matte Pre-coated Film",
+  "高收缩BOPP 香烟包装膜": "High Shrink BOPP Cigarette Packaging Film",
+  "烟膜带拉线": "Cigarette Film with Tear Tape",
+  "烟用拉线": "Cigarette Tear Tape",
+  "硬脂酸,单宁酸,川蜡": "Stearic Acid, Tannic Acid, Sichuan Wax",
+  "自粘标签": "Self-adhesive Label",
+  "美纹纸胶带母膜": "Crepe Paper Tape Base Film",
+  "POF 热收缩膜": "POF Heat Shrink Film",
+  "普通CPP薄膜": "Standard CPP Film",
+  "普通香烟包装膜": "Standard Cigarette Packaging Film",
+  "PVC 卡片": "PVC Card",
+  "双面胶胶带母膜": "Double-sided Tape Base Film",
+  "塑料挤出淋膜复合机组（(SDF-F 1300型淋膜复合机配置)）": "Plastic Extrusion Coating Lamination Machine (SDF-F 1300)",
+  "BOPP电容镀铝膜": "BOPP Capacitor Metallized Film",
+  "BOPP预涂膜": "BOPP Pre-coated Film",
+};
+
+async function main() {
+  console.log('Translating English product names...');
+  
+  let updated = 0;
+  let notFound = 0;
+  
+  for (const [cnName, enName] of Object.entries(translations)) {
+    const result = await execute(
+      "UPDATE products SET name = ? WHERE lang = 'en' AND name = ?",
+      [enName, cnName]
+    );
+    if (result.rowsAffected > 0) {
+      console.log(`  Updated: "${cnName}" → "${enName}" (${result.rowsAffected} rows)`);
+      updated += result.rowsAffected;
+    } else {
+      notFound++;
+    }
+  }
+  
+  console.log(`\nTotal updated: ${updated} rows`);
+  console.log(`Not found (already translated or different): ${notFound} entries`);
+  
+  process.exit(0);
+}
+
+main().catch(e => { console.error(e); process.exit(1); });
