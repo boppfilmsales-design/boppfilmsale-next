@@ -275,6 +275,25 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ========================================
+   Mobile Menu Button
+   ======================================== */
+.mobile-menu-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+  padding: 0;
+}
+@media (max-width: 768px) {
+  .mobile-menu-btn { display: flex; }
+}
+
+/* ========================================
    Product Pages
    ======================================== */
 .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MobileMenuButton } from "../MobileMenuButton";
+import { MobileMenu } from "./MobileMenu";
 import Sidebar from "./Sidebar";
 
 export function ZhHeader() {
@@ -26,7 +26,7 @@ export function ZhHeader() {
             <span className="lang-text">EN</span>
           </a>
         </div>
-        <MobileMenuButton />
+        <MobileMenu />
       </div>
     </header>
   );

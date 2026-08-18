@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MobileMenuButton } from "../MobileMenuButton";
+import { MobileMenu } from "./MobileMenu";
 
 export function EnHeader() {
   return (
@@ -27,7 +27,7 @@ export function EnHeader() {
             <span className="lang-text">EN</span>
           </a>
         </div>
-        <MobileMenuButton />
+        <MobileMenu />
       </div>
     </header>
   );

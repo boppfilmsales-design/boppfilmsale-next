@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MobileMenuButton } from "./MobileMenuButton";
+import { MobileMenu } from "./MobileMenu";
 
 export function RootHeader() {
   return (
@@ -27,7 +27,7 @@ export function RootHeader() {
             <span className="lang-text">EN</span>
           </a>
         </div>
-        <MobileMenuButton />
+        <MobileMenu />
       </div>
     </header>
   );
