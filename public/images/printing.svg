@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#e3f2fd"/>
+  <text x="400" y="280" font-family="system-ui, sans-serif" font-size="24" fill="#1565c0" text-anchor="middle" font-weight="600">Printing & Publishing</text>
+  <text x="400" y="320" font-family="system-ui, sans-serif" font-size="16" fill="#666" text-anchor="middle">High Clarity Films for Gravure/Flexo/Digital</text>
+  <rect x="300" y="360" width="200" height="80" fill="#1565c0" rx="8" opacity="0.15"/>
+  <rect x="320" y="375" width="160" height="50" fill="#1565c0" rx="4"/>
+  <circle cx="400" cy="400" r="12" fill="#1565c0" opacity="0.3"/>
+</svg>

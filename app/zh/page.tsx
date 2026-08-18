@@ -178,7 +178,7 @@ export default async function HomeZhPage() {
               <Link href="/zh/about" className="btn btn-primary" style={{ marginTop: 24 }}>了解更多</Link>
             </div>
             <div className="about-image">
-              <img src="https://oldwebsite-boppfilmsale.vercel.app/images/factory.jpg" alt="东渐集团工厂" />
+              <img src="/images/factory.svg" alt="东渐集团工厂" />
             </div>
           </div>
         </div>
@@ -221,42 +221,42 @@ export default async function HomeZhPage() {
           <p className="section-subtitle">我们的材料广泛应用于全球多个关键工业领域。</p>
           <div className="industries-grid">
             <article className="industry-card">
-              <img src="https://oldwebsite-boppfilmsale.vercel.app/images/food-packaging.jpg" alt="食品包装" />
+              <img src="/images/food-packaging.svg" alt="食品包装" />
               <div className="industry-overlay">
                 <h3>食品包装</h3>
                 <p>符合 FDA/EU 标准的食品级 BOPP/BOPET 薄膜，可直接接触食品。</p>
               </div>
             </article>
             <article className="industry-card">
-              <img src="https://oldwebsite-boppfilmsale.vercel.app/images/pharma.jpg" alt="医药包装" />
+              <img src="/images/pharma.svg" alt="医药包装" />
               <div className="industry-overlay">
                 <h3>医药包装</h3>
                 <p>高阻隔薄膜用于泡罩包装、袋装剂、医疗器械包装等。</p>
               </div>
             </article>
             <article className="industry-card">
-              <img src="https://oldwebsite-boppfilmsale.vercel.app/images/electronics.jpg" alt="电子电气" />
+              <img src="/images/electronics.svg" alt="电子电气" />
               <div className="industry-overlay">
                 <h3>电子电气</h3>
                 <p>BOPET 电容薄膜、绝缘胶带、PCB 标签用热转印碳带。</p>
               </div>
             </article>
             <article className="industry-card">
-              <img src="https://oldwebsite-boppfilmsale.vercel.app/images/tobacco.jpg" alt="烟草包装" />
+              <img src="/images/tobacco.svg" alt="烟草包装" />
               <div className="industry-overlay">
                 <h3>烟草包装</h3>
                 <p>专用 BOPP 薄膜用于卷烟外包装和内衬纸应用。</p>
               </div>
             </article>
             <article className="industry-card">
-              <img src="https://oldwebsite-boppfilmsale.vercel.app/images/printing.jpg" alt="印刷出版" />
+              <img src="/images/printing.svg" alt="印刷出版" />
               <div className="industry-overlay">
                 <h3>印刷出版</h3>
                 <p>高透明度薄膜适配凹版、柔版、数码印刷，油墨附着力强。</p>
               </div>
             </article>
             <article className="industry-card">
-              <img src="https://oldwebsite-boppfilmsale.vercel.app/images/solar.jpg" alt="光伏新能源" />
+              <img src="/images/solar.svg" alt="光伏新能源" />
               <div className="industry-overlay">
                 <h3>光伏新能源</h3>
                 <p>EVA 胶膜、背板材料、高效双面双玻组件，助力清洁能源。</p>
@@ -275,7 +275,7 @@ export default async function HomeZhPage() {
             {news.map((n) => (
               <article key={n.id} className="news-card">
                 <div className="news-image">
-                  <img src="https://oldwebsite-boppfilmsale.vercel.app/images/news-placeholder.jpg" alt={n.title} />
+                  <img src="/images/news-placeholder.svg" alt={n.title} />
                 </div>
                 <div className="news-content">
                   <div className="news-meta">

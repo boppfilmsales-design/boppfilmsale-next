@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#fce8e8"/>
+  <text x="400" y="280" font-family="system-ui, sans-serif" font-size="24" fill="#c62828" text-anchor="middle" font-weight="600">Pharmaceutical Packaging</text>
+  <text x="400" y="320" font-family="system-ui, sans-serif" font-size="16" fill="#666" text-anchor="middle">High Barrier Blister & Sachet Films</text>
+  <rect x="340" y="360" width="120" height="120" fill="#c62828" rx="8" opacity="0.15"/>
+  <circle cx="400" cy="420" r="25" fill="#c62828" opacity="0.3"/>
+</svg>

@@ -164,7 +164,7 @@ export default async function HomeEnPage() {
               <Link href="/en/about" className="btn btn-primary" style={{ marginTop: 24 }}>Read Our Story</Link>
             </div>
             <div className="about-image">
-              <img src="https://oldwebsite-boppfilmsale.vercel.app/images/factory.jpg" alt="AEC GROUP Factory" />
+              <img src="/images/factory.svg" alt="AEC GROUP Factory" />
             </div>
           </div>
         </div>
@@ -207,42 +207,42 @@ export default async function HomeEnPage() {
           <p className="section-subtitle">Our materials power critical applications across diverse industrial sectors worldwide.</p>
           <div className="industries-grid">
             <article className="industry-card">
-              <img src="https://oldwebsite-boppfilmsale.vercel.app/images/food-packaging.jpg" alt="Food Packaging" />
+              <img src="/images/food-packaging.svg" alt="Food Packaging" />
               <div className="industry-overlay">
                 <h3>Food Packaging</h3>
                 <p>Food-grade BOPP/BOPET films meeting FDA/EU standards for direct food contact.</p>
               </div>
             </article>
             <article className="industry-card">
-              <img src="https://oldwebsite-boppfilmsale.vercel.app/images/pharma.jpg" alt="Pharmaceutical" />
+              <img src="/images/pharma.svg" alt="Pharmaceutical" />
               <div className="industry-overlay">
                 <h3>Pharmaceutical</h3>
                 <p>High-barrier films for blister packs, sachets, and medical device packaging.</p>
               </div>
             </article>
             <article className="industry-card">
-              <img src="https://oldwebsite-boppfilmsale.vercel.app/images/electronics.jpg" alt="Electronics" />
+              <img src="/images/electronics.svg" alt="Electronics" />
               <div className="industry-overlay">
                 <h3>Electronics</h3>
                 <p>BOPET capacitor films, insulation tapes, and thermal transfer ribbons for PCB labeling.</p>
               </div>
             </article>
             <article className="industry-card">
-              <img src="https://oldwebsite-boppfilmsale.vercel.app/images/tobacco.jpg" alt="Tobacco" />
+              <img src="/images/tobacco.svg" alt="Tobacco" />
               <div className="industry-overlay">
                 <h3>Tobacco</h3>
                 <p>Specialty BOPP films for cigarette overwrap and inner liner applications.</p>
               </div>
             </article>
             <article className="industry-card">
-              <img src="https://oldwebsite-boppfilmsale.vercel.app/images/printing.jpg" alt="Printing" />
+              <img src="/images/printing.svg" alt="Printing" />
               <div className="industry-overlay">
                 <h3>Printing & Publishing</h3>
                 <p>High-clarity films for gravure, flexo, and digital printing with excellent ink adhesion.</p>
               </div>
             </article>
             <article className="industry-card">
-              <img src="https://oldwebsite-boppfilmsale.vercel.app/images/solar.jpg" alt="Solar Energy" />
+              <img src="/images/solar.svg" alt="Solar Energy" />
               <div className="industry-overlay">
                 <h3>Solar Energy</h3>
                 <p>EVA encapsulants, backsheets, and high-efficiency PV modules for renewable energy.</p>
@@ -261,7 +261,7 @@ export default async function HomeEnPage() {
             {news.map((n) => (
               <article key={n.id} className="news-card">
                 <div className="news-image">
-                  <img src="https://oldwebsite-boppfilmsale.vercel.app/images/news-placeholder.jpg" alt={n.title} />
+                  <img src="/images/news-placeholder.svg" alt={n.title} />
                 </div>
                 <div className="news-content">
                   <div className="news-meta">
