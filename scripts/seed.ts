@@ -135,8 +135,8 @@ async function main() {
 
   const aboutCn = `<h2>中国东渐集团</h2><p>东渐集团是由安徽东渐新材料有限公司和安徽东渐进出口有限公司组成的，集生产、研发、销售和服务为一体的综合性企业，产品覆盖塑膜工业、涂布工业、印刷复合业、镀铝镭射等行业。</p><p>公司从软塑料包装薄膜及制品业起步，成长为在包装薄膜、薄膜深加工（彩印、镀铝、涂布、分切等）、薄膜电子材料、胶粘带、胶水及自动化机械设备等行业具有雄厚实力的大型企业。</p>`;
   const aboutEn = `<h2>AEC Group</h2><p>AEC Group, composed of Anhui Dongjian New Materials Co., Ltd. and Anhui Dongjian Import & Export Co., Ltd., is a comprehensive enterprise integrating production, R&D, sales and service, covering plastic film, coating, printing and metallizing industries.</p>`;
-  const contactCn = `<p><strong>联系人：</strong>杨经理</p><p><strong>电话：</strong>86-551-64687285 / 63483992</p><p><strong>传真：</strong>86-551-64683490</p><p><strong>手机：</strong>18919659471</p><p><strong>邮箱：</strong>sale@boppfilmsale.com</p><p><strong>地址：</strong>安徽省合肥市包河区徽州大道1158号（邮编：230031）</p><p><strong>Skype：</strong>boppfilmsales　<strong>QQ：</strong>2538474128</p>`;
-  const contactEn = `<p><strong>Contact：</strong>Manager Yang</p><p><strong>Tel：</strong>86-551-64687285</p><p><strong>Email：</strong>sale@boppfilmsale.com</p><p><strong>Address：</strong>No.1158 Huizhou Avenue, Baohua District, Hefei, Anhui (230031)</p>`;
+  const contactCn = `<p><strong>联系人：</strong>杨经理</p><p><strong>电话：</strong>86-551-64687285 / 63483992</p><p><strong>传真：</strong>86-551-64683490</p><p><strong>手机：</strong>18919659471</p><p><strong>邮箱：</strong>sale@boppfilmsale.com</p><p><strong>地址：</strong>安徽省合肥市包河区徽州大道1158号（邮编：230051）</p><p><strong>Skype：</strong>boppfilmsales　<strong>QQ：</strong>2538474128</p>`;
+  const contactEn = `<p><strong>Contact：</strong>Manager Yang</p><p><strong>Tel：</strong>86-551-64687285</p><p><strong>Email：</strong>sale@boppfilmsale.com</p><p><strong>Address：</strong>No.1158 Huizhou Avenue, Baohe District, Hefei, Anhui (230051)</p>`;
 
   await execute("INSERT INTO pages (lang, slug, title, content, sort) VALUES (?,?,?,?,?)", ["cn", "about", "关于我们", aboutCn, 1]);
   await execute("INSERT INTO pages (lang, slug, title, content, sort) VALUES (?,?,?,?,?)", ["en", "about", "About Us", aboutEn, 1]);
