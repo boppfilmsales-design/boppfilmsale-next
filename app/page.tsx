@@ -267,9 +267,9 @@ export default async function HomeEnPage() {
                   <div className="news-meta">
                     <span>{new Date(n.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                   </div>
-                  <h3><Link href={"/news/" + n.id}>{n.title}</Link></h3>
+                  <h3><Link href={"/en/news/" + n.id}>{n.title}</Link></h3>
                   <p>Read the full article to learn more about our latest updates and industry insights.</p>
-                  <Link href={"/news/" + n.id} className="news-link">Read More →</Link>
+                  <Link href={"/en/news/" + n.id} className="news-link">Read More →</Link>
                 </div>
               </article>
             ))}
