@@ -94,18 +94,23 @@ fs.writeFileSync(
   "utf8",
 );
 
-/* Cloudflare Pages headers. General defaults first; more specific rules
-   later override the cache policy for immutable / long-lived assets. */
+/* Cloudflare Pages concatenates Cache-Control from every matching rule, so
+   each path must match exactly ONE cache rule. The catch-all sets security
+   headers only; cache policy is set on disjoint path groups below. */
+const htmlCache = "  Cache-Control: public, max-age=0, must-revalidate";
 fs.writeFileSync(
   path.join(PUB, "_headers"),
   [
     "/*",
-    "  Cache-Control: public, max-age=0, must-revalidate",
     "  X-Content-Type-Options: nosniff",
     "  X-Frame-Options: SAMEORIGIN",
     "  Referrer-Policy: strict-origin-when-cross-origin",
     "  Permissions-Policy: camera=(), microphone=(), geolocation=()",
     "",
+    "/en", htmlCache, "",
+    "/zh", htmlCache, "",
+    "/en/*", htmlCache, "",
+    "/zh/*", htmlCache, "",
     "/_next/static/*",
     "  Cache-Control: public, max-age=31536000, immutable",
     "",
