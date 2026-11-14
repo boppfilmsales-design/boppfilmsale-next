@@ -65,15 +65,29 @@ export default function CategoryPage({
               {uses.map((x) => <span key={x}>{x}</span>)}
             </div>
 
-            <p className="prose" style={{ marginBottom: 30, maxWidth: "none" }}>
-              {zh
-                ? `本页列出源站「${category.zh}」分类下的全部 ${products.length} 个条目，含型号与实物图片。厚度、幅宽、卷长、卷芯与表面处理均可按您的加工条件确认；页面参数为示意，最终以技术数据表为准。`
-                : `All ${products.length} entries from the ${category.en} division are listed below with their source model references and real product photos. Thickness, width, roll length, core and surface treatment are confirmed against your converting conditions; published values are indicative and the technical datasheet governs.`}
-            </p>
+            <div className="prose" style={{ marginBottom: 26, maxWidth: "none" }}>
+              <p>
+                {zh
+                  ? `本页列出源站「${category.zh}」分类下的全部 ${products.length} 个条目，含型号与实物图片。厚度、幅宽、卷长、卷芯与表面处理均可按您的加工条件确认；页面参数为示意，最终以技术数据表为准。`
+                  : `All ${products.length} entries from the ${category.en} division are listed below with their source model references and real product photos. Thickness, width, roll length, core and surface treatment are confirmed against your converting conditions; published values are indicative and the technical datasheet governs.`}
+              </p>
+              <p>
+                {zh
+                  ? "每个产品页都包含该等级的选型要点、完整参数表、典型应用、询价所需信息与常见问题，供工程与采购直接核对。若您现用某一等级，提供数据表或留样，我们可以按厚度、处理值、摩擦系数与封合窗口做配对。"
+                  : "Each product page carries grade-specific selection points, a full specification table, typical applications, the information needed for an exact quotation and common technical questions. If you already run a grade, send the datasheet or a retained sample and we will match gauge, treatment, COF and seal window."}
+              </p>
+            </div>
+
+            {category.subcatsZh.length > 0 && (
+              <div className="subcat-row">
+                <span className="subcat-label">{zh ? "源站子类" : "Source sub-categories"}</span>
+                {category.subcatsZh.slice(0, 12).map((s, i) => <span key={`${s}-${i}`}>{s}</span>)}
+              </div>
+            )}
 
             <div className="product-grid">
-              {products.map((p) => (
-                <ProductCard key={p.slug} product={p} lang={lang} catName={name} />
+              {products.map((p, i) => (
+                <ProductCard key={p.slug} product={p} lang={lang} catName={name} eager={i < 6} />
               ))}
             </div>
           </div>

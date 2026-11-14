@@ -1,4 +1,3 @@
-import Link from "next/link";
 
 export default function NotFound() {
   return (
@@ -10,8 +9,8 @@ export default function NotFound() {
           The page may have moved. The full product catalogue and the contact form are below.
         </p>
         <div className="btn-row" style={{ marginTop: 28 }}>
-          <Link href="/en/products" className="btn btn-primary">Browse products</Link>
-          <Link href="/zh/products" className="btn btn-outline">浏览产品</Link>
+          <a href="/en/products" className="btn btn-primary">Browse products</a>
+          <a href="/zh/products" className="btn btn-outline">浏览产品</a>
         </div>
       </div>
     </section>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navLinks = {
@@ -88,10 +87,10 @@ export default function Header() {
   return (
     <header className={`site-header ${isScrolled ? "scrolled" : ""}`} ref={dropdownRef}>
       <div className="header-inner wrap">
-        <Link href={locale === "zh" ? "/zh" : "/en"} className="logo" aria-label="AEC GROUP Home">
+        <a href={locale === "zh" ? "/zh" : "/en"} className="logo" aria-label="AEC GROUP Home">
           <span className="logo-icon">AEC</span>
           <span className="logo-text">GROUP</span>
-        </Link>
+        </a>
 
         <nav className={`site-nav ${isMobileMenuOpen ? "open" : ""}`} role="navigation" aria-label="Main navigation">
           {links.map((link) => {
@@ -105,7 +104,7 @@ export default function Header() {
                   onMouseEnter={() => setHoveredNav("products")}
                   onMouseLeave={() => setHoveredNav(null)}
                 >
-                  <Link
+                  <a
                     href={link.href}
                     className={`${isProductsActive ? "active" : ""} has-dropdown`}
                     aria-haspopup="true"
@@ -115,13 +114,13 @@ export default function Header() {
                     <svg className="dropdown-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="6 9 12 15 18 9" />
                     </svg>
-                  </Link>
+                  </a>
                   
                   {/* Desktop dropdown */}
                   {(hoveredNav === "products" || mobileSubmenuOpen === "products") && (
                     <div className="dropdown-menu" role="menu">
                       {categories.map((cat) => (
-                        <Link
+                        <a
                           key={cat.href}
                           href={cat.href}
                           className={`dropdown-item ${pathname === cat.href ? "active" : ""}`}
@@ -132,9 +131,9 @@ export default function Header() {
                           }}
                         >
                           {cat.label}
-                        </Link>
+                        </a>
                       ))}
-                      <Link
+                      <a
                         href={productsBaseHref}
                         className="dropdown-item dropdown-view-all"
                         role="menuitem"
@@ -144,7 +143,7 @@ export default function Header() {
                         }}
                       >
                         {locale === "zh" ? "查看所有产品" : "View All Products"}
-                      </Link>
+                      </a>
                     </div>
                   )}
                 </div>
@@ -152,29 +151,29 @@ export default function Header() {
             }
 
             return (
-              <Link
+              <a
                 key={link.href}
                 href={link.href}
                 className={pathname === link.href || (link.href !== (locale === "zh" ? "/zh" : "/") && pathname.startsWith(link.href)) ? "active" : ""}
               >
                 {link.label}
-              </Link>
+              </a>
             );
           })}
-          <Link href={locale === "zh" ? "/zh/contact" : "/contact"} className="nav-cta">
+          <a href={locale === "zh" ? "/zh/contact" : "/contact"} className="nav-cta">
             {locale === "zh" ? "获取报价" : "Get a Quote"}
-          </Link>
+          </a>
         </nav>
 
         <div className="lang-switcher">
-          <Link
+          <a
             href={locale === "zh" ? "/en" : "/zh"}
             className="lang-btn"
             aria-label={locale === "zh" ? "English Version" : "中文版"}
           >
             <span className="lang-flag">{locale === "zh" ? "🇺🇸" : "🇨🇳"}</span>
             <span>{locale === "zh" ? "English" : "中文"}</span>
-          </Link>
+          </a>
         </div>
 
         <button

@@ -1,6 +1,5 @@
 import { CAPABILITIES, UI, type Lang } from "@/content/site";
 import { IconCheck, IconArrow } from "../Icons";
-import Link from "next/link";
 import PageHero from "./PageHero";
 import FinalCta from "./FinalCta";
 
@@ -84,12 +83,12 @@ export default function CapabilitiesPage({ lang }: { lang: Lang }) {
             ))}
           </div>
           <div className="btn-row" style={{ marginTop: 44 }}>
-            <Link href={`${base}/products`} className="btn btn-navy">
+            <a href={`${base}/products`} className="btn btn-navy">
               {u.viewProducts} <IconArrow size={16} />
-            </Link>
-            <Link href={`${base}/cases`} className="btn btn-outline">
+            </a>
+            <a href={`${base}/cases`} className="btn btn-outline">
               {zh ? "查看实际案例" : "See it applied"} <IconArrow size={16} />
-            </Link>
+            </a>
           </div>
         </div>
       </section>

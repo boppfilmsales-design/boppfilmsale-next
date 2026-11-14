@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { Lang } from "@/lib/data";
 import type { SiteProduct } from "@/data";
 
@@ -17,7 +16,7 @@ export default function ProductDetailView({
   return (
     <div className="product-detail">
       <nav className="product-breadcrumb">
-        <Link href={base}>Products</Link>
+        <a href={base}>Products</a>
         <span>/</span>
         <span>{product.name}</span>
       </nav>
@@ -81,9 +80,9 @@ export default function ProductDetailView({
       )}
 
       <p style={{ marginTop: 40, textAlign: "center" }}>
-        <Link href={base} className="btn btn-outline">
+        <a href={base} className="btn btn-outline">
           {backLabel}
-        </Link>
+        </a>
       </p>
     </div>
   );

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { SITE } from "@/content/site";
 
 /**
@@ -27,8 +26,8 @@ export default function RootGateway() {
         <p>Choose a language to continue.</p>
         <p>选择语言继续浏览。</p>
         <div className="btn-row" style={{ marginTop: 28 }}>
-          <Link href="/en" className="btn btn-primary" hrefLang="en">English</Link>
-          <Link href="/zh" className="btn btn-outline" hrefLang="zh-CN">中文</Link>
+          <a href="/en" className="btn btn-primary" hrefLang="en">English</a>
+          <a href="/zh" className="btn btn-outline" hrefLang="zh-CN">中文</a>
         </div>
         <p style={{ marginTop: 40, fontSize: 14, color: "var(--muted)" }}>
           {SITE.legalName} · {SITE.email}

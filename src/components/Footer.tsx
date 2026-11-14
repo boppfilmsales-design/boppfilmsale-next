@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { CATEGORIES } from "@/data/categories";
 import { SITE, NAV, FOOTER, UI, type Lang } from "@/content/site";
 import { IconArrow, IconMail, IconPhone, IconPin, IconClock } from "./Icons";
@@ -17,37 +16,37 @@ export default function Footer({ lang }: { lang: Lang }) {
             <h2>{t.ctaTitle}</h2>
             <p>{t.ctaBody}</p>
           </div>
-          <Link href={`${base}/contact`} className="btn btn-primary">
+          <a href={`${base}/contact`} className="btn btn-primary">
             {t.ctaButton} <IconArrow size={16} />
-          </Link>
+          </a>
         </div>
 
         <div className="footer-main">
           <div className="footer-brand">
-            <Link href={base} className="logo" aria-label="AEC GROUP — Home">
+            <a href={base} className="logo" aria-label="AEC GROUP — Home">
               <span className="logo-mark">AEC</span>
               <span className="logo-text">GROUP<small>FILM &amp; PACKAGING</small></span>
-            </Link>
+            </a>
             <p>{t.tagline}</p>
           </div>
 
           <div className="footer-col">
             <h4>{t.navTitle}</h4>
             {NAV[lang].map((l) => (
-              <Link key={l.href} href={l.href}>{l.label}</Link>
+              <a key={l.href} href={l.href}>{l.label}</a>
             ))}
           </div>
 
           <div className="footer-col">
             <h4>{t.productTitle}</h4>
             {CATEGORIES.slice(0, 8).map((c) => (
-              <Link key={c.slug} href={`${base}/products/${c.slug}`}>
+              <a key={c.slug} href={`${base}/products/${c.slug}`}>
                 {lang === "zh" ? c.zh : c.en}
-              </Link>
+              </a>
             ))}
-            <Link href={`${base}/products`} style={{ color: "var(--copper-light)", fontWeight: 650 }}>
+            <a href={`${base}/products`} style={{ color: "var(--copper-light)", fontWeight: 650 }}>
               {u.allProducts} →
-            </Link>
+            </a>
           </div>
 
           <div className="footer-col">

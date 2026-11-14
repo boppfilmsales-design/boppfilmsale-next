@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { SITE, UI, type Lang } from "@/content/site";
 import { IconArrow, IconMail, IconClock } from "../Icons";
 
@@ -22,9 +21,9 @@ export default function FinalCta({
         <h2>{title}</h2>
         <p>{body}</p>
         <div className="btn-row">
-          <Link href={`${base}/contact`} className="btn btn-primary">
+          <a href={`${base}/contact`} className="btn btn-primary">
             {u.getQuote} <IconArrow size={16} />
-          </Link>
+          </a>
           <a href={`mailto:${SITE.email}`} className="btn btn-ghost-light">
             <IconMail size={16} /> {SITE.email}
           </a>

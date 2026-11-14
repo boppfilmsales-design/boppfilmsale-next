@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { CATEGORIES } from "@/data/categories";
 import { PRODUCTS } from "@/data/catalog";
 import { SITE, UI, type Lang } from "@/content/site";
@@ -67,7 +66,7 @@ export default function ProductsIndex({ lang }: { lang: Lang }) {
 
             <div className="cat-grid two">
               {CATEGORIES.map((c, i) => (
-                <Link className="cat-card" href={`${base}/products/${c.slug}`} key={c.slug}>
+                <a className="cat-card" href={`${base}/products/${c.slug}`} key={c.slug}>
                   <div className="cat-top">
                     <span className="cat-num">{String(i + 1).padStart(2, "0")} / {CATEGORIES.length}</span>
                     <span className="cat-swatch"><CategoryIcon slug={c.slug} /></span>
@@ -76,7 +75,7 @@ export default function ProductsIndex({ lang }: { lang: Lang }) {
                   <p>{zh ? c.descZh : c.descEn}</p>
                   <span className="cat-count">{c.count} {u.productCount}</span>
                   <span className="cat-arrow">{u.seeCategory} <IconArrow size={14} /></span>
-                </Link>
+                </a>
               ))}
             </div>
           </div>

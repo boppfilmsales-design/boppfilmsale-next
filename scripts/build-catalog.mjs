@@ -246,13 +246,11 @@ function toEnglishName(zh, code, catEn) {
   for (const [re, rep] of NAME_PATTERNS) {
     if (re.test(zh)) { base = rep; break; }
   }
-  // Numeric spec in the Chinese name (e.g. "25MIC", "4.5微米", "70克")
-  const spec = zh.match(/(\d+(?:\.\d+)?\s*(?:mic|µm|um|微米|克|g|mm|米))/i);
-  let suffix = spec ? spec[1].replace(/微米/gi, "µm").replace(/克/g, "gsm").trim() : "";
   if (!base) base = cleanCode(code);
   if (!base || base.length < 3) base = catEn;
-  const out = suffix ? `${base} ${suffix}` : base;
-  return out.slice(0, 90).trim();
+  // Specs live on the product page, never in the title — the source names
+  // contain long, truncated spec strings that made titles unreadable.
+  return base.slice(0, 90).trim();
 }
 
 function cleanCode(code = "") {
@@ -287,6 +285,37 @@ function slugify(s) {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "")
     .slice(0, 60);
+}
+
+/** The source "spec" fields sometimes contain whole paragraphs of prose.
+    Keep only genuine numeric ranges / units; discard anything else. */
+function cleanSpecValue(s = "") {
+  let v = String(s)
+    .replace(/&micro;|&#181;/gi, "µ")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/^range including\s*:\s*/i, "")
+    .replace(/µmrons?|microns?|mic\b/gi, "µm")
+    .replace(/微米/g, "µm")
+    .replace(/毫米/g, "mm")
+    .replace(/\bmeters?\b/gi, "m")
+    .replace(/\s*\+/g, " + ")
+    .replace(/\s+/g, " ")
+    .trim();
+  // Cut prose tails such as "Color: White, printed buyer's..."
+  v = v.split(/Color\s*:|buyer|的颜色|备注|说明\s*:/i)[0].trim();
+  v = v
+    .replace(/\bMM\b/g, "mm")
+    .replace(/\s+,/g, ",")
+    .replace(/\s*\.\s*$/, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  // A Chinese sentence in a spec field is prose, not a measurement.
+  if (/[\u4e00-\u9fa5]/.test(v) && v.length > 12) return "";
+  if (/[。；，、]/.test(v)) return "";
+  if (!/\d/.test(v)) return "";
+  if (v.length > 60) v = v.slice(0, 60).replace(/\s+\S*$/, "").trim();
+  return v;
 }
 
 function idFromUrl(url) {
@@ -351,20 +380,18 @@ for (const cat of cats) {
       const m = description.match(re);
       return m ? m[1].trim().slice(0, 90) : "";
     };
-    const thickness = pick(d.thickness, /(?:产品厚度|厚度|Thickness)\s*[:：]?\s*([^\n]{2,60})/i);
-    const width = pick(d.width, /(?:产品宽度|宽度|Width)\s*[:：]?\s*([^\n]{2,60})/i);
-    const length = pick(d.length, /(?:产品长度|长度|Length)\s*[:：]?\s*([^\n]{2,60})/i);
+    const thickness = cleanSpecValue(pick(d.thickness, /(?:产品厚度|厚度|Thickness)\s*[:：]?\s*([^\n]{2,60})/i));
+    const width = cleanSpecValue(pick(d.width, /(?:产品宽度|宽度|Width)\s*[:：]?\s*([^\n]{2,60})/i));
+    const length = cleanSpecValue(pick(d.length, /(?:产品长度|长度|Length)\s*[:：]?\s*([^\n]{2,60})/i));
     const features = (d.features || "").replace(/&[a-z]+;|&?#?\d+;/gi, " ").trim().slice(0, 400);
     const applications = (d.applications || "").replace(/&[a-z]+;|&?#?\d+;/gi, " ").trim().slice(0, 400);
 
-    // Normalise Chinese unit words so spec tables read correctly in English.
+    // cleanSpecValue() already normalised the units; only tidy separators here.
     const specEn = (s) => (s || "")
-      .replace(/微米|um|UM|µm/gi, "µm")
-      .replace(/毫米/g, "mm")
-      .replace(/（|\）/g, "")
-      .replace(/\s*MM\b/gi, " mm")
-      .replace(/克/g, "g")
+      .replace(/[（(]\s*/g, " (")
+      .replace(/[）)]/g, ")")
       .replace(/\s*[:：]\s*/, ": ")
+      .replace(/\s*,\s*/g, ", ")
       .replace(/\s+/g, " ")
       .trim();
 
@@ -432,15 +459,9 @@ for (const p of all) {
   const seen = emitted.get(p.nameEn) || 0;
   emitted.set(p.nameEn, seen + 1);
   if (total > 1) {
-    const qualifier =
-      (p.code && !/^\d{6,}$/.test(p.code) && !/^\d+$/.test(p.code)
-        ? p.code.replace(/^AEC[_\s-]*/i, "").replace(/[_-]+/g, " ").trim()
-        : "") ||
-      p.thickness ||
-      p.nameZh.replace(/[^\w\s.-]/g, "").trim().slice(0, 28) ||
-      `Series ${seen + 1}`;
-    p.nameEn = `${p.nameEn} — ${qualifier} (${String(seen + 1).padStart(2, "0")})`.slice(0, 120);
-    p.slug = (slugify(p.nameEn) || `product-${p.id}`).slice(0, 70) + `-${p.id}`;
+    /* Keep titles readable: no internal source codes, no stacked spec strings.
+       The slug stays untouched so already-indexed URLs never break. */
+    p.nameEn = `${p.nameEn} — Grade ${String(seen + 1).padStart(2, "0")}`.slice(0, 110);
   }
 }
 

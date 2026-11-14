@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { CATEGORIES } from "@/data/categories";
 import { NAV, UI, type Lang } from "@/content/site";
@@ -23,16 +22,16 @@ export default function Header() {
   return (
     <header className="site-header">
       <div className="header-inner wrap">
-        <Link href={base} className="logo" aria-label="AEC GROUP — Home">
+        <a href={base} className="logo" aria-label="AEC GROUP — Home">
           <span className="logo-mark">AEC</span>
           <span className="logo-text">GROUP<small>FILM &amp; PACKAGING</small></span>
-        </Link>
+        </a>
 
         <nav className={`site-nav ${open ? "open" : ""}`} id="main-navigation" aria-label="Main navigation">
           {links.map((link) =>
             link.href === productsHref ? (
               <div className="nav-dropdown" key={link.href} data-open={subOpen ? "true" : "false"}>
-                <Link
+                <a
                   href={link.href}
                   className={isActive(link.href) ? "active" : ""}
                   aria-haspopup="true"
@@ -49,10 +48,10 @@ export default function Header() {
                 >
                   {link.label}
                   <IconChevron size={14} className="dropdown-arrow" />
-                </Link>
+                </a>
                 <div className="dropdown-menu" role="menu">
                   {CATEGORIES.map((c) => (
-                    <Link
+                    <a
                       key={c.slug}
                       href={`${productsHref}/${c.slug}`}
                       className="dropdown-item"
@@ -61,43 +60,43 @@ export default function Header() {
                     >
                       {lang === "zh" ? c.zh : c.en}
                       <span>{c.count} {t.productCount}</span>
-                    </Link>
+                    </a>
                   ))}
-                  <Link
+                  <a
                     href={productsHref}
                     className="dropdown-item dropdown-view-all"
                     role="menuitem"
                     onClick={() => { setOpen(false); setSubOpen(false); }}
                   >
                     {t.allProducts} →
-                  </Link>
+                  </a>
                 </div>
               </div>
             ) : (
-              <Link
+              <a
                 key={link.href}
                 href={link.href}
                 className={isActive(link.href) ? "active" : ""}
                 onClick={() => setOpen(false)}
               >
                 {link.label}
-              </Link>
+              </a>
             )
           )}
-          <Link href={`${base}/contact`} className="nav-cta" onClick={() => setOpen(false)}>
+          <a href={`${base}/contact`} className="nav-cta" onClick={() => setOpen(false)}>
             {t.getQuote}
-          </Link>
+          </a>
         </nav>
 
         <div className="header-actions">
-          <Link
+          <a
             href={lang === "zh" ? "/en" : "/zh"}
             className="lang-btn"
             aria-label={lang === "zh" ? "Switch to English" : "切换到中文"}
             hrefLang={lang === "zh" ? "en" : "zh-CN"}
           >
             {t.language}
-          </Link>
+          </a>
           <button
             className="mobile-menu-btn"
             type="button"

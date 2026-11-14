@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { CATEGORIES } from "@/data/catalog";
 import { HOME, UI, FAQS, SITE, type Lang } from "@/content/site";
 import {
@@ -37,12 +36,12 @@ export default function HomePage({ lang }: { lang: Lang }) {
             <h1>{c.h1}<em>{c.h1Accent}</em></h1>
             <p className="hero-sub">{c.sub}</p>
             <div className="hero-actions">
-              <Link href={`${base}/contact`} className="btn btn-primary">
+              <a href={`${base}/contact`} className="btn btn-primary">
                 {c.primaryCta} <IconArrow size={16} />
-              </Link>
-              <Link href={`${base}/products`} className="btn btn-ghost-light">
+              </a>
+              <a href={`${base}/products`} className="btn btn-ghost-light">
                 {c.secondaryCta}
-              </Link>
+              </a>
             </div>
             <p className="hero-micro"><IconClock size={15} /> {u.responseTime} · {u.noObligation}</p>
           </div>
@@ -117,9 +116,9 @@ export default function HomePage({ lang }: { lang: Lang }) {
             ))}
           </div>
           <div style={{ marginTop: 44 }}>
-            <Link href={`${base}/capabilities`} className="btn btn-outline">
+            <a href={`${base}/capabilities`} className="btn btn-outline">
               {c.capability.cta} <IconArrow size={16} />
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -134,7 +133,7 @@ export default function HomePage({ lang }: { lang: Lang }) {
           </div>
           <div className="cat-grid">
             {CATEGORIES.map((cat, i) => (
-              <Link className="cat-card" href={`${base}/products/${cat.slug}`} key={cat.slug}>
+              <a className="cat-card" href={`${base}/products/${cat.slug}`} key={cat.slug}>
                 <div className="cat-top">
                   <span className="cat-num">{String(i + 1).padStart(2, "0")} / 11</span>
                   <span className="cat-swatch"><CategoryIcon slug={cat.slug} /></span>
@@ -143,13 +142,13 @@ export default function HomePage({ lang }: { lang: Lang }) {
                 <p>{catDesc(cat)}</p>
                 <span className="cat-count">{cat.count} {u.productCount}</span>
                 <span className="cat-arrow">{u.seeCategory} <IconArrow size={14} /></span>
-              </Link>
+              </a>
             ))}
           </div>
           <div style={{ marginTop: 40, textAlign: "center" }}>
-            <Link href={`${base}/products`} className="btn btn-navy">
+            <a href={`${base}/products`} className="btn btn-navy">
               {c.catalog.cta} <IconArrow size={16} />
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -177,9 +176,9 @@ export default function HomePage({ lang }: { lang: Lang }) {
             ))}
           </div>
           <div style={{ marginTop: 40 }}>
-            <Link href={`${base}/capabilities`} className="btn btn-outline">
+            <a href={`${base}/capabilities`} className="btn btn-outline">
               {c.capability.cta} <IconArrow size={16} />
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -207,9 +206,9 @@ export default function HomePage({ lang }: { lang: Lang }) {
             ))}
           </div>
           <div style={{ marginTop: 40, textAlign: "center" }}>
-            <Link href={`${base}/cases`} className="btn btn-outline">
+            <a href={`${base}/cases`} className="btn btn-outline">
               {c.cases.cta} <IconArrow size={16} />
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -222,9 +221,9 @@ export default function HomePage({ lang }: { lang: Lang }) {
             <h2 className="section-title">{c.about.title}</h2>
             {c.about.paragraphs.map((p) => <p key={p}>{p}</p>)}
             <div className="btn-row" style={{ marginTop: 28 }}>
-              <Link href={`${base}/about`} className="btn btn-navy">
+              <a href={`${base}/about`} className="btn btn-navy">
                 {c.about.cta} <IconArrow size={16} />
-              </Link>
+              </a>
             </div>
             <div className="about-facts" style={{ marginTop: 38 }}>
               {c.about.facts.map((f) => (
@@ -276,9 +275,9 @@ export default function HomePage({ lang }: { lang: Lang }) {
             ))}
           </div>
           <div style={{ marginTop: 34, textAlign: "center" }}>
-            <Link href={`${base}/faq`} className="btn btn-outline">
+            <a href={`${base}/faq`} className="btn btn-outline">
               {c.faq.cta} <IconArrow size={16} />
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -290,9 +289,9 @@ export default function HomePage({ lang }: { lang: Lang }) {
           <h2>{c.finalCta.title}</h2>
           <p>{c.finalCta.body}</p>
           <div className="btn-row">
-            <Link href={`${base}/contact`} className="btn btn-primary">
+            <a href={`${base}/contact`} className="btn btn-primary">
               {c.finalCta.primary} <IconArrow size={16} />
-            </Link>
+            </a>
             <a href={`mailto:${SITE.email}`} className="btn btn-ghost-light">
               <IconMail size={16} /> {c.finalCta.secondary}
             </a>

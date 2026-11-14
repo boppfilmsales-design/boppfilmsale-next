@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { UI, type Lang } from "@/content/site";
 import { breadcrumbJsonLd, jsonLdScript } from "@/lib/seo";
 
@@ -35,7 +34,7 @@ export default function PageHero({
             <span key={`${c.name}-${i}`}>
               {i > 0 && <span className="sep" aria-hidden="true"> / </span>}
               {c.href ? (
-                <Link href={c.href}>{c.name}</Link>
+                <a href={c.href}>{c.name}</a>
               ) : (
                 <span className="current" aria-current="page">{c.name}</span>
               )}

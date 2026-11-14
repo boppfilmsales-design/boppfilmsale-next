@@ -1,7 +1,6 @@
 "use client";
 
 import { Suspense, useMemo } from "react";
-import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { getCategories, getProducts, type Lang } from "@/lib/data";
 
@@ -59,7 +58,7 @@ function ProductsListInner({ lang }: { lang: Lang }) {
             {lang === "zh" ? "产品分类" : "Product Categories"}
           </h3>
           <div style={{ padding: "12px 16px" }}>
-            <Link
+            <a
               href={base}
               className={!activeCategoryId ? "active" : ""}
               style={{
@@ -75,9 +74,9 @@ function ProductsListInner({ lang }: { lang: Lang }) {
               }}
             >
               {labels.all}
-            </Link>
+            </a>
             {categories.map((cat) => (
-              <Link
+              <a
                 key={cat.id}
                 href={`${base}?category=${cat.id}`}
                 className={activeCategoryId === cat.id ? "active" : ""}
@@ -95,7 +94,7 @@ function ProductsListInner({ lang }: { lang: Lang }) {
                 }}
               >
                 {cat.name}
-              </Link>
+              </a>
             ))}
           </div>
         </aside>
@@ -122,7 +121,7 @@ function ProductsListInner({ lang }: { lang: Lang }) {
           ) : (
             <div className="product-grid">
               {products.map((p) => (
-                <Link
+                <a
                   key={p.id}
                   href={`${base}/${p.id}`}
                   className="product-card"
@@ -165,7 +164,7 @@ function ProductsListInner({ lang }: { lang: Lang }) {
                       </div>
                     )}
                   </div>
-                </Link>
+                </a>
               ))}
             </div>
           )}
