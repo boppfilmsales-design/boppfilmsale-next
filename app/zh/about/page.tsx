@@ -1,19 +1,10 @@
-import { query } from "@/lib/db";
+import type { Metadata } from "next";
+import AboutPage from "@/components/pages/AboutPage";
+import { ABOUT } from "@/content/site";
+import { pageMeta } from "@/lib/seo";
 
-export default async function AboutPage() {
-  const rows = await query<{ title: string; content: string | null }>(
-    "SELECT title, content FROM pages WHERE slug='about' AND lang='cn' LIMIT 1"
-  );
-  const page = rows[0];
+export const metadata: Metadata = pageMeta("zh", "/zh/about", ABOUT.zh.metaTitle, ABOUT.zh.metaDescription);
 
-  return (
-    <div>
-      <h1>{page?.title || "关于我们"}</h1>
-      {page?.content ? (
-        <div className="prose" dangerouslySetInnerHTML={{ __html: page.content }} />
-      ) : (
-        <p>中国东渐集团，专业薄膜材料供应商。</p>
-      )}
-    </div>
-  );
+export default function Page() {
+  return <AboutPage lang="zh" />;
 }

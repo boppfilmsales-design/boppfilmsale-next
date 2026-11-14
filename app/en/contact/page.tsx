@@ -1,22 +1,10 @@
-import { query } from "@/lib/db";
+import type { Metadata } from "next";
+import ContactPage from "@/components/pages/ContactPage";
+import { CONTACT } from "@/content/pages";
+import { pageMeta } from "@/lib/seo";
 
-export default async function EnContactPage() {
-  const rows = await query<{ title: string; content: string | null }>(
-    "SELECT title, content FROM pages WHERE slug='contact' AND lang='en' LIMIT 1"
-  );
-  const page = rows[0];
+export const metadata: Metadata = pageMeta("en", "/en/contact", CONTACT.en.metaTitle, CONTACT.en.metaDescription);
 
-  return (
-    <div>
-      <h1>{page?.title || "Contact Us"}</h1>
-      {page?.content ? (
-        <div className="prose contact-info" dangerouslySetInnerHTML={{ __html: page.content }} />
-      ) : (
-        <div className="contact-info">
-          <p><strong>Email:</strong> sale@boppfilmsale.com</p>
-          <p><strong>Tel:</strong> 86-551-64687285</p>
-        </div>
-      )}
-    </div>
-  );
+export default function Page() {
+  return <ContactPage lang="en" />;
 }

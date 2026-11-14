@@ -1,22 +1,10 @@
-import { query } from "@/lib/db";
+import type { Metadata } from "next";
+import ContactPage from "@/components/pages/ContactPage";
+import { CONTACT } from "@/content/pages";
+import { pageMeta } from "@/lib/seo";
 
-export default async function ContactPage() {
-  const rows = await query<{ title: string; content: string | null }>(
-    "SELECT title, content FROM pages WHERE slug='contact' AND lang='cn' LIMIT 1"
-  );
-  const page = rows[0];
+export const metadata: Metadata = pageMeta("zh", "/zh/contact", CONTACT.zh.metaTitle, CONTACT.zh.metaDescription);
 
-  return (
-    <div>
-      <h1>{page?.title || "联系我们"}</h1>
-      {page?.content ? (
-        <div className="prose contact-info" dangerouslySetInnerHTML={{ __html: page.content }} />
-      ) : (
-        <div className="contact-info">
-          <p><strong>邮箱：</strong> sale@boppfilmsale.com</p>
-          <p><strong>电话：</strong> 86-551-64687285</p>
-        </div>
-      )}
-    </div>
-  );
+export default function Page() {
+  return <ContactPage lang="zh" />;
 }

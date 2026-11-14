@@ -24,30 +24,28 @@ const navLinks = {
 // Product categories for dropdown
 const productCategories = {
   en: [
-    { label: "Biaxially Oriented Polypropylene Film", href: "/en/products?category=Biaxially%20Oriented%20Polypropylene%20Film" },
-    { label: "Biaxially Oriented Polyester Film", href: "/en/products?category=Biaxially%20Oriented%20Polyester%20Film" },
-    { label: "Adhesive Tape and Glue", href: "/en/products?category=Adhesive%20Tape%20and%20Glue" },
-    { label: "Coating Film", href: "/en/products?category=Coating%20Film" },
-    { label: "Intermediates", href: "/en/products?category=Intermediates" },
-    { label: "PS Film, CPP Film, Nylon Film", href: "/en/products?category=PS%20Film%2C%20CPP%20Film%2C%20Nylon%20Film" },
-    { label: "Tear Tape, Ribbon, Label, Coding Machine", href: "/en/products?category=Tear%20Tape%2C%20Ribbon%2C%20Label%2C%20Coding%20Machine" },
-    { label: "PE, PVC, PO Film and Bags", href: "/en/products?category=PE%2C%20PVC%2C%20PO%20Film%20and%20Bags" },
-    { label: "Paper Products", href: "/en/products?category=Paper%20Products" },
-    { label: "Machinery and Electronics", href: "/en/products?category=Machinery%20and%20Electronics" },
-    { label: "Epidemic Prevention Supplies", href: "/en/products?category=Epidemic%20Prevention%20Supplies" },
+    { label: "Biaxially Oriented Polypropylene Film", href: "/en/products?category=1" },
+    { label: "Biaxially Oriented Polyester Film", href: "/en/products?category=2" },
+    { label: "Adhesive Tape and Glue", href: "/en/products?category=3" },
+    { label: "Coating Film", href: "/en/products?category=4" },
+    { label: "PS Film, CPP Film, Nylon Film", href: "/en/products?category=6" },
+    { label: "Tear Tape, Ribbon, Label, Coding Machine", href: "/en/products?category=7" },
+    { label: "PE, PVC, PO Film and Bags", href: "/en/products?category=8" },
+    { label: "Paper Products", href: "/en/products?category=9" },
+    { label: "Machinery and Electronics", href: "/en/products?category=10" },
+    { label: "Epidemic Prevention Supplies", href: "/en/products?category=11" },
   ],
   zh: [
-    { label: "双向拉伸聚丙烯薄膜", href: "/zh/products?category=Biaxially%20Oriented%20Polypropylene%20Film" },
-    { label: "双向拉伸聚酯薄膜", href: "/zh/products?category=Biaxially%20Oriented%20Polyester%20Film" },
-    { label: "胶粘带与胶水", href: "/zh/products?category=Adhesive%20Tape%20and%20Glue" },
-    { label: "涂布薄膜", href: "/zh/products?category=Coating%20Film" },
-    { label: "中间体", href: "/zh/products?category=Intermediates" },
-    { label: "PS膜、CPP膜、尼龙膜", href: "/zh/products?category=PS%20Film%2C%20CPP%20Film%2C%20Nylon%20Film" },
-    { label: "撕拉带、碳带、标签、打码机", href: "/zh/products?category=Tear%20Tape%2C%20Ribbon%2C%20Label%2C%20Coding%20Machine" },
-    { label: "PE、PVC、PO薄膜及袋子", href: "/zh/products?category=PE%2C%20PVC%2C%20PO%20Film%20and%20Bags" },
-    { label: "纸制品", href: "/zh/products?category=Paper%20Products" },
-    { label: "机器设备与电子产品", href: "/zh/products?category=Machinery%20and%20Electronics" },
-    { label: "防疫用品", href: "/zh/products?category=Epidemic%20Prevention%20Supplies" },
+    { label: "双向拉伸聚丙烯薄膜", href: "/zh/products?category=1" },
+    { label: "双向拉伸聚酯薄膜", href: "/zh/products?category=2" },
+    { label: "胶粘带与胶水", href: "/zh/products?category=3" },
+    { label: "涂布薄膜", href: "/zh/products?category=4" },
+    { label: "PS膜、CPP膜、尼龙膜", href: "/zh/products?category=6" },
+    { label: "撕拉带、碳带、标签、打码机", href: "/zh/products?category=7" },
+    { label: "PE、PVC、PO薄膜及袋子", href: "/zh/products?category=8" },
+    { label: "纸制品", href: "/zh/products?category=9" },
+    { label: "机器设备与电子产品", href: "/zh/products?category=10" },
+    { label: "防疫用品", href: "/zh/products?category=11" },
   ],
 };
 
@@ -90,7 +88,7 @@ export default function Header() {
   return (
     <header className={`site-header ${isScrolled ? "scrolled" : ""}`} ref={dropdownRef}>
       <div className="header-inner wrap">
-        <Link href={locale === "zh" ? "/zh" : "/"} className="logo" aria-label="AEC GROUP Home">
+        <Link href={locale === "zh" ? "/zh" : "/en"} className="logo" aria-label="AEC GROUP Home">
           <span className="logo-icon">AEC</span>
           <span className="logo-text">GROUP</span>
         </Link>
@@ -170,7 +168,7 @@ export default function Header() {
 
         <div className="lang-switcher">
           <Link
-            href={locale === "zh" ? "/" : "/zh"}
+            href={locale === "zh" ? "/en" : "/zh"}
             className="lang-btn"
             aria-label={locale === "zh" ? "English Version" : "中文版"}
           >

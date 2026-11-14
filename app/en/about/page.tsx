@@ -1,19 +1,10 @@
-import { query } from "@/lib/db";
+import type { Metadata } from "next";
+import AboutPage from "@/components/pages/AboutPage";
+import { ABOUT } from "@/content/site";
+import { pageMeta } from "@/lib/seo";
 
-export default async function EnAboutPage() {
-  const rows = await query<{ title: string; content: string | null }>(
-    "SELECT title, content FROM pages WHERE slug='about' AND lang='en' LIMIT 1"
-  );
-  const page = rows[0];
+export const metadata: Metadata = pageMeta("en", "/en/about", ABOUT.en.metaTitle, ABOUT.en.metaDescription);
 
-  return (
-    <div>
-      <h1>{page?.title || "About Us"}</h1>
-      {page?.content ? (
-        <div className="prose" dangerouslySetInnerHTML={{ __html: page.content }} />
-      ) : (
-        <p>AEC Group - professional film materials supplier.</p>
-      )}
-    </div>
-  );
+export default function Page() {
+  return <AboutPage lang="en" />;
 }

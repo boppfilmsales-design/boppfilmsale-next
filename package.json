@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "seo": "node scripts/build-seo.mjs",
+    "postexport": "node scripts/postbuild.mjs",
+    "build": "node scripts/build-seo.mjs && next build && node scripts/postbuild.mjs",
     "start": "next start",
     "lint": "next lint",
     "seed": "tsx scripts/seed.ts"

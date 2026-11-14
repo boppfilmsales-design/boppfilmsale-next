@@ -1,31 +1,15 @@
-export default function EnFeedbackPage() {
-  return (
-    <div>
-      <h1>Leave a Message</h1>
-      <p>If you are interested in our products, please leave your information and we will contact you shortly.</p>
-      <form className="contact-form" action="/api/feedback" method="post">
-        <label>
-          Name
-          <input name="name" required />
-        </label>
-        <label>
-          Company
-          <input name="company" />
-        </label>
-        <label>
-          Email
-          <input name="email" type="email" />
-        </label>
-        <label>
-          Phone
-          <input name="phone" />
-        </label>
-        <label>
-          Message
-          <textarea name="message" rows={5} required />
-        </label>
-        <button type="submit" className="btn">Submit</button>
-      </form>
-    </div>
-  );
+import type { Metadata } from "next";
+import ContactPage from "@/components/pages/ContactPage";
+import { CONTACT } from "@/content/pages";
+import { pageMeta } from "@/lib/seo";
+
+// Legacy URL kept alive; the canonical contact page is /en/contact.
+export const metadata: Metadata = {
+  ...pageMeta("en", "/en/feedback", CONTACT.en.metaTitle, CONTACT.en.metaDescription),
+  alternates: { canonical: "/en/contact" },
+  robots: { index: false, follow: true },
+};
+
+export default function Page() {
+  return <ContactPage lang="en" />;
 }

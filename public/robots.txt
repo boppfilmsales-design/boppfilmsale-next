@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /en/feedback
+Disallow: /zh/feedback
+
+Sitemap: https://second.boppfilmsale.com/sitemap.xml

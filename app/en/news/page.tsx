@@ -1,26 +1,10 @@
-import Link from "next/link";
-import { query } from "@/lib/db";
+import type { Metadata } from "next";
+import NewsPage from "@/components/pages/NewsPage";
+import { NEWS } from "@/content/pages";
+import { pageMeta } from "@/lib/seo";
 
-export default async function EnNewsPage() {
-  const news = await query<{
-    id: number;
-    title: string;
-    summary: string | null;
-    created_at: string;
-  }>("SELECT id, title, summary, created_at FROM news WHERE lang='en' ORDER BY created_at DESC");
+export const metadata: Metadata = pageMeta("en", "/en/news", NEWS.en.metaTitle, NEWS.en.metaDescription);
 
-  return (
-    <div>
-      <h1>News</h1>
-      <ul>
-        {news.map((n) => (
-          <li key={n.id} style={{ marginBottom: 14 }}>
-            <Link href={`/en/news/${n.id}`}><strong>{n.title}</strong></Link>
-            <div style={{ color: "#999", fontSize: 13 }}>{n.created_at}</div>
-            {n.summary && <div style={{ marginTop: 4 }}>{n.summary}</div>}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+export default function Page() {
+  return <NewsPage lang="en" />;
 }
